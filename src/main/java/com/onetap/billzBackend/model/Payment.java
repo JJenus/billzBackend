@@ -16,10 +16,9 @@ public class Payment {
     private Long id;
     @Column(name = "user_id")
     private String userId;
-
-    @Column(name = "trans_id")
+    @Column(name = "trans_id", unique = true)
     private String transactionId;
-    @Column(name = "trans_ref")
+    @Column(name = "trans_ref", unique = true)
     private String transactionRef;
     private String amount;
     @Column(name = "currency_code", nullable = false)
