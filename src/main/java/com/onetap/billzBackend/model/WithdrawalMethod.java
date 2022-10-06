@@ -16,8 +16,6 @@ public class WithdrawalMethod {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String method;
-    @Column(name = "withdrawal_id")
-    private String withdrawalId;
-    @Column(name = "destination_id")
-    private String destinationId;
+    private String name;
+    private String address;
 }

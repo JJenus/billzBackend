@@ -12,8 +12,20 @@ public class WithdrawalService {
     WithdrawalRequestRepo withdrawalRequestRepo;
     @Autowired
     WithdrawalMethodRepo withdrawalMethodRepo;
+    @Autowired
+    PaymentService paymentService;
 
-    public WithdrawalRequest sendRequest(WithdrawalRequest request){
+    public WithdrawalRequest sendRequest(WithdrawalRequest request, String secrete){
+        if(!confirmSecrete(secrete)){
+            return null;
+        }
+        if (paymentService.checkPayment(request.getTransactionId()) == null){
+            return null;
+        }
         return withdrawalRequestRepo.save(request);
+    }
+
+    private boolean confirmSecrete(String secrete){
+        return true;
     }
 }
